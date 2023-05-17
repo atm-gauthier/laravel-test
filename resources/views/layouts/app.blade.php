@@ -11,9 +11,18 @@ Ceci se passe de commentaire.
 		 <title>
 		  Mon super site
 		 </title>
+
+		 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+		 
 	</head>
 	<body>
 		@include('partials.navbar')
-		@yield('content')
+		<div class="container mx-auto">
+			@yield('content')
+		</div>
+		<script src="{{ asset('js/app.js') }}"></script>
 	</body>
+
+	
+
 </html>
