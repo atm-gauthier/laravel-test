@@ -13,6 +13,7 @@ Ceci se passe de commentaire.
 		 </title>
 	</head>
 	<body>
+		@include('partials.navbar')
 		@yield('content')
 	</body>
 </html>
