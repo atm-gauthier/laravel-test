@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'App\Http\Controllers\PostController@index')->name('welcome');
 //Route::get('/posts/{id}', 'App\Http\Controllers\PostController@show');
-Route::get('/posts/{id}', 'App\Http\Controllers\PostController@show')->whereNumber('id'); // Pour tester le type de paramètre url renseigné
+Route::get('/posts/{id}', 'App\Http\Controllers\PostController@show')->whereNumber('id')->name('posts.show'); // Pour tester le type de paramètre url renseigné
 Route::get('/contact', 'App\Http\Controllers\PostController@contact')->name('contact');
