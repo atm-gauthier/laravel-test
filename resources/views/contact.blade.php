@@ -3,7 +3,7 @@
 @section('content')
 
 	<h1>
-		Contact
+		<STRONG>Contact</STRONG>
 	</h1>
 	<h2>
 		Contactez nous
