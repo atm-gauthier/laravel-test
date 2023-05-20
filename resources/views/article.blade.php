@@ -19,6 +19,11 @@
 
 	</form>
 	<br><br>
+
+
+	<span>{{ $post->image ? $post->image->path : 'Aucune image' }}</span>
+
+	<br><br>
 	<h3><STRONG><a href="{{ route('welcome') }}">Retour</a></STRONG></h3>
 
 	<form method="POST" action="{{ route('posts.delete',$post->id) }}">
