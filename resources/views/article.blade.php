@@ -19,6 +19,8 @@
 
 	</form>
 	<br><br>
+	Affichage de l'image :
+	<br><br>
 
 
 	<span>{{ $post->image ? $post->image->path : 'Aucune image' }}</span>
@@ -32,6 +34,8 @@
 		<button type="submit" class="btn btn-danger btn-sm"><STRONG>Delete</STRONG></button>
 	</form>
 
+	<br><br>
+	Affichage des commentaires :
 	<br><br>
 
 	<!-- Grâce à la relation one to many définie dans les models, je peux directement boucler sur les comments d'un post de cette manière : -->
@@ -47,5 +51,24 @@
 		<span>Aucun commentaire pour ce post</span>
 
 	@endforelse
+
+	<br><br>
+	Affichage des tags :
+	<br><br>
+
+	@forelse($post->tags as $tag)
+		<span>{{ $tag->name }}</span>
+		<br>
+	@empty
+		Aucun tag<br>
+	@endforelse
+
+
+	<form method="POST" action="{{ route('posts.addtag', $post->id) }}">
+		@csrf
+		<input type="text" name="tag_name" class="border-gray-600 border-2">
+		<input type="hidden" name="post_id" value="{{ $post->id }}">
+		<button type="SUBMIT" class="bg-green-500">Ajouter tag</button>
+	</form>
 
 @endsection

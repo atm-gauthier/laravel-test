@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\Tag;
 
 class PostController extends Controller
 {
@@ -122,6 +123,19 @@ class PostController extends Controller
         $post->delete();
 
         return redirect()->route('welcome');
+    }
+
+    public function addtag(Request $request) {
+
+        $tag = new Tag();
+        $tag->name = $request->tag_name;
+        $tag->save();
+
+        $post = Post::findOrFail($request->post_id);
+        $post->tags()->attach([$tag->id]);
+
+         return redirect()->route('posts.show', $post->id);
+
     }
 
 }
