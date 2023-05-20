@@ -19,12 +19,28 @@
 
 	</form>
 	<br><br>
-	<h3><STRONG><a href="{{ route('welcome') }}">Retour</STRONG></h3>
+	<h3><STRONG><a href="{{ route('welcome') }}">Retour</a></STRONG></h3>
 
 	<form method="POST" action="{{ route('posts.delete',$post->id) }}">
 		@method('delete')
 		@csrf
 		<button type="submit" class="btn btn-danger btn-sm"><STRONG>Delete</STRONG></button>
 	</form>
+
+	<br><br>
+
+	<!-- Grâce à la relation one to many définie dans les models, je peux directement boucler sur les comments d'un post de cette manière : -->
+
+	<!-- Le forelse est comme un foreach mais il permet de gérer un else au cas ou la liste est vide -->
+	@forelse($post->comments as $comment)
+
+		<!-- Voir carbon laravel (les attributs d'une classe sont des instances de carbon) -->
+		<span>Contenu : {{ $comment->content }} | créé le : {{ $comment->created_at->format('d/m/Y') }}</span><br>
+
+	@empty
+
+		<span>Aucun commentaire pour ce post</span>
+
+	@endforelse
 
 @endsection
